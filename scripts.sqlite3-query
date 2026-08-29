@@ -1,0 +1,30 @@
+-- database: ./students.db
+
+CREATE TABLE students (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    age INTEGER DEFAULT 17,
+    major TEXT
+);
+
+CREATE TABLE courses (
+    course_id  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    course_name TEXT NOT NULL,
+    instructor TEXT NOT NULL
+   
+);
+
+CREATE TABLE student_courses (
+    student_id INTEGER NOT NULL REFERENCES students(id),
+    course_id INTEGER NOT NULL REFERENCES courses(course_id),
+    PRIMARY KEY (student_id, course_id)
+);
+
+SELECT * FROM students WHERE age>=18;
+
+INSERT INTO 'students' ('name', 'age') 
+VALUES ('Степан Коваленко', 19),
+('Степан Коваленко', 19),
+('Степан Коваленко', 19),
+('Степан Коваленко', 19),
+('Степан Коваленко', 19);
